@@ -20,7 +20,6 @@ public class StartUI {
     private void showMenu(List<UserAction> actions) {
         Consumer<String> show = System.out::println;
         show.accept("Menu.");
-        show.accept("___________________");
         for (UserAction item : actions) {
             show.accept(actions.indexOf(item) + ". " + item.name());
         }
