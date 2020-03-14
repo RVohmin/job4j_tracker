@@ -12,5 +12,5 @@ public interface Template {
      * @param template -starting String where we replace template ${...}
      * @param data Map, where key equals template, value replaced template
      */
-    String generate(String template, Map<String, String> data);
+    String generate(String template, Map<String, String> data) throws Exception;
 }

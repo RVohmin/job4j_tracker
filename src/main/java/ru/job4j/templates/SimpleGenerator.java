@@ -17,7 +17,7 @@ public class SimpleGenerator implements Template {
      * @return new String where template pelaced to value
      */
     @Override
-    public String generate(String template, Map<String, String> data) {
+    public String generate(String template, Map<String, String> data) throws Exception {
         StringBuilder stringBuilder = new StringBuilder(template);
         Matcher matcher = pattern.matcher(stringBuilder.toString());
         while (matcher.find()) {
@@ -34,6 +34,9 @@ public class SimpleGenerator implements Template {
                         replacedText = value.substring(0, key.length());
                     }
                 }
+            }
+            if (replacedText.length() == 0) {
+                throw new Exception();
             }
             stringBuilder.replace(matcher.start(), matcher.end(), replacedText);
             matcher = pattern.matcher(stringBuilder.toString());
