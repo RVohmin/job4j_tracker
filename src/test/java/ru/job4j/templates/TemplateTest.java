@@ -1,6 +1,5 @@
 package ru.job4j.templates;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Map;
