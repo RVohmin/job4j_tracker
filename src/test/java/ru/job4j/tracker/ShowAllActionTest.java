@@ -21,7 +21,7 @@ public class ShowAllActionTest {
         ShowAllAction act = new ShowAllAction();
         act.execute(new StubInput(new String[] {}), tracker);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                .add("==== Show All Item ====")
+                .add("==== Показать все заявки ====")
                 .add(item.getId() + " " + item.getName())
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));

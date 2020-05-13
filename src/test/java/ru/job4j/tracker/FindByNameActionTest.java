@@ -21,8 +21,8 @@ public class FindByNameActionTest {
         FindItemByNameAction act = new FindItemByNameAction();
         act.execute(new StubInput(new String[] {item.getName()}), tracker);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                .add("==== Starting finding Item by Name ====")
-                .add("Finding " + item.getName() + " " + item.getId())
+                .add("==== Начинаем поиск заявки по имени ====")
+                .add("Найдено " + item.getName() + " " + item.getId())
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));
         System.setOut(def);
