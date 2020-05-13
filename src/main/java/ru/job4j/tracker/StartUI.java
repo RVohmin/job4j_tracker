@@ -6,12 +6,11 @@ import java.util.function.Consumer;
 
 public class StartUI {
 
-
     public void init(Input input, Tracker tracker, List<UserAction> actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
-            int select = input.askInt("Select ", actions.size());
+            int select = input.askInt("Выберите действие ", actions.size());
             UserAction action = actions.get(select);
             run = action.execute(input, tracker);
         }
@@ -19,7 +18,7 @@ public class StartUI {
 
     private void showMenu(List<UserAction> actions) {
         Consumer<String> show = System.out::println;
-        show.accept("Menu.");
+        show.accept("Меню: ");
         for (UserAction item : actions) {
             show.accept(actions.indexOf(item) + ". " + item.name());
         }

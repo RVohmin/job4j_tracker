@@ -3,19 +3,19 @@ package ru.job4j.tracker;
 public class ReplaceItemAction implements UserAction {
     @Override
     public String name() {
-        return ("Edit item");
+        return ("Редактирование заявки");
     }
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println("==== Starting replace Item ====");
-        String id = input.askStr("Enter existing ID Item: ");
-        String name = input.askStr("Enter name for new Item: ");
+        System.out.println("==== Начинаем замену заявки ====");
+        String id = input.askStr("Введите существующий ID заявки: ");
+        String name = input.askStr("Введите новое имя заявки: ");
         Item item = new Item(name);
         if (tracker.replace(id, item)) {
-            System.out.println("Item successfully replaced");
+            System.out.println("Заявка успешно заменена");
         } else {
-            System.out.println("error");
+            System.out.println("ошибка");
         }
         return true;
     }

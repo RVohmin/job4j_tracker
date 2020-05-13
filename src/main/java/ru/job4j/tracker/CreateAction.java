@@ -3,13 +3,13 @@ package ru.job4j.tracker;
 public class CreateAction implements UserAction {
     @Override
     public String name() {
-        return "Add new Item";
+        return "Добавить новую заявку ";
     }
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println("==== Starting create Item ====");
-        String name = input.askStr("Enter name: ");
+        System.out.println("==== Начинаем создание заявки ====");
+        String name = input.askStr("Введите имя: ");
         Item item = new Item(name);
         tracker.add(item);
         return true;

@@ -3,17 +3,17 @@ package ru.job4j.tracker;
 public class DeleteItemAction implements UserAction {
     @Override
     public String name() {
-        return "Delete item";
+        return "Удалить заявку";
     }
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println("==== Starting delete Item ====");
-        String id = input.askStr("Enter existing ID Item: ");
+        System.out.println("==== Начинаем удаление заявки ====");
+        String id = input.askStr("Введите существующий ID заявки: ");
         if (tracker.delete(id)) {
-            System.out.println("Item successfully deleted");
+            System.out.println("Заявка успешно удалена");
         } else {
-            System.out.println("error");
+            System.out.println("ошибка");
         }
         return true;
     }
