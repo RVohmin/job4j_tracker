@@ -18,7 +18,7 @@ public class StartUITest {
         StubAction action = new StubAction();
         List<UserAction> act = new ArrayList<>();
         act.add(action);
-        new StartUI().init(input, new Tracker(), act);
+        new StartUI().init(input, new MemTracker(), act);
         assertThat(action.isCall(), is(true));
     }
 }

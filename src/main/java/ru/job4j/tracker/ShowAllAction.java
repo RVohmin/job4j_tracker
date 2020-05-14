@@ -8,9 +8,9 @@ public class ShowAllAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store memTracker) {
         System.out.println("==== Показать все заявки ====");
-        tracker.findAll();
+        memTracker.findAll();
         return true;
     }
 }

@@ -7,10 +7,10 @@ public class FindItemByIdAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store memTracker) {
         System.out.println("==== Начинаем поиск заявки по ID ====");
         String id = input.askStr("Введите ID заявки для поиска: ");
-        Item finding = tracker.findById(id);
+        Item finding = memTracker.findById(id);
         if (finding != null) {
             System.out.println("Найдено " + finding.getName() + " " + finding.getId());
         } else {

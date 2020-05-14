@@ -7,12 +7,12 @@ public class ReplaceItemAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store memTracker) {
         System.out.println("==== Начинаем замену заявки ====");
         String id = input.askStr("Введите существующий ID заявки: ");
         String name = input.askStr("Введите новое имя заявки: ");
         Item item = new Item(name);
-        if (tracker.replace(id, item)) {
+        if (memTracker.replace(id, item)) {
             System.out.println("Заявка успешно заменена");
         } else {
             System.out.println("ошибка");

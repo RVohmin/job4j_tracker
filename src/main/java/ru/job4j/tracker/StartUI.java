@@ -6,13 +6,13 @@ import java.util.function.Consumer;
 
 public class StartUI {
 
-    public void init(Input input, Tracker tracker, List<UserAction> actions) {
+    public void init(Input input, Store memTracker, List<UserAction> actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
             int select = input.askInt("Выберите действие ", actions.size());
             UserAction action = actions.get(select);
-            run = action.execute(input, tracker);
+            run = action.execute(input, memTracker);
         }
     }
 
@@ -27,16 +27,34 @@ public class StartUI {
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Input validate = new ValidateInput(input);
-        Tracker tracker = new Tracker();
-        List<UserAction> actions = new ArrayList<>();
-        actions.add(new CreateAction());
-        actions.add(new ShowAllAction());
-        actions.add(new ReplaceItemAction());
-        actions.add(new DeleteItemAction());
-        actions.add(new FindItemByIdAction());
-        actions.add(new FindItemByNameAction());
-        actions.add(new ExitAction());
-        new StartUI().init(validate, tracker, actions);
+        try (Store tracker = new SqlTracker()) {
+            List<UserAction> actions = new ArrayList<>();
+            actions.add(new CreateAction());
+            actions.add(new ShowAllAction());
+            actions.add(new ReplaceItemAction());
+            actions.add(new DeleteItemAction());
+            actions.add(new FindItemByIdAction());
+            actions.add(new FindItemByNameAction());
+            actions.add(new ExitAction());
+            new StartUI().init(validate, tracker, actions);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+//        Input input = new ConsoleInput();
+//        Input validate = new ValidateInput(input);
+//        MemTracker memTracker = new MemTracker();
+//        List<UserAction> actions = new ArrayList<>();
+//        actions.add(new CreateAction());
+//        actions.add(new ShowAllAction());
+//        actions.add(new ReplaceItemAction());
+//        actions.add(new DeleteItemAction());
+//        actions.add(new FindItemByIdAction());
+//        actions.add(new FindItemByNameAction());
+//        actions.add(new ExitAction());
+//        new StartUI().init(validate, memTracker, actions);
     }
 }
 
