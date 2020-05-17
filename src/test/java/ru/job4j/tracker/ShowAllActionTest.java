@@ -15,7 +15,7 @@ public class ShowAllActionTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
-        MemTracker memTracker = new MemTracker();
+        Store memTracker = (Store) new MemTracker();
         Item item = new Item("fix bug");
         memTracker.add(item);
         ShowAllAction act = new ShowAllAction();

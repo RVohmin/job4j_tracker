@@ -28,6 +28,7 @@ public class StartUI {
         Input input = new ConsoleInput();
         Input validate = new ValidateInput(input);
         try (Store tracker = new SqlTracker()) {
+            tracker.init();
             List<UserAction> actions = new ArrayList<>();
             actions.add(new CreateAction());
             actions.add(new ShowAllAction());

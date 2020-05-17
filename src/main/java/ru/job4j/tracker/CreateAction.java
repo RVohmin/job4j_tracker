@@ -7,11 +7,11 @@ public class CreateAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Store memTracker) {
+    public boolean execute(Input input, Store tracker) {
         System.out.println("==== Начинаем создание заявки ====");
         String name = input.askStr("Введите имя: ");
         Item item = new Item(name);
-        memTracker.add(item);
+        tracker.add(item);
         return true;
     }
 }
