@@ -42,11 +42,9 @@ public class StartUI {
             e.printStackTrace();
         }
 
-
-
 //        Input input = new ConsoleInput();
 //        Input validate = new ValidateInput(input);
-//        MemTracker memTracker = new MemTracker();
+//        MemTracker tracker = new MemTracker();
 //        List<UserAction> actions = new ArrayList<>();
 //        actions.add(new CreateAction());
 //        actions.add(new ShowAllAction());
@@ -55,7 +53,7 @@ public class StartUI {
 //        actions.add(new FindItemByIdAction());
 //        actions.add(new FindItemByNameAction());
 //        actions.add(new ExitAction());
-//        new StartUI().init(validate, memTracker, actions);
+//        new StartUI().init(validate, tracker, actions);
     }
 }
 
