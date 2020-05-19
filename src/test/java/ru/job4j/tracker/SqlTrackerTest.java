@@ -5,7 +5,6 @@ import org.junit.Test;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
 
@@ -39,56 +38,56 @@ public class SqlTrackerTest {
     }
 
     @Test
-    public void whenReplace() throws Exception {
+    public void whenReplace() {
         try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
             Item item = tracker.add(new Item("Peter"));
             String id = item.getId();
             tracker.replace(id, new Item("Alex"));
             assertThat(tracker.findByName("Alex").size(), is(1));
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @Test
-    public void delete() throws Exception {
+    public void delete() {
         try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
             Item item = tracker.add(new Item("Peter"));
             String id = item.getId();
             tracker.delete(id);
             assertNull(tracker.findById(id));
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @Test
-    public void findAll() throws Exception {
+    public void findAll() {
         try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
             Item item = tracker.add(new Item("Peter"));
             assertThat(tracker.findAll().size(), is(5));
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @Test
-    public void findByName() throws Exception {
+    public void findByName() {
         try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
             Item item = tracker.add(new Item("Peter"));
             assertEquals(tracker.findByName(item.getName()), List.of(item));
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @Test
-    public void findById() throws Exception {
+    public void findById() {
         try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
             Item item = tracker.add(new Item("Peter"));
             String id = item.getId();
             assertEquals(tracker.findById(id), item);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

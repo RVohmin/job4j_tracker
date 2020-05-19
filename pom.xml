@@ -10,6 +10,13 @@
     <packaging>pom</packaging>
     <version>3.0</version>
     <url>http://job4j.ru/</url>
+
+    <properties>
+        <maven.compiler.source>14</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <profiles>
         <profile>
             <id>test</id>
@@ -43,11 +50,7 @@
         </profile>
     </profiles>
 
-    <properties>
-        <maven.compiler.source>14</maven.compiler.source>
-        <maven.compiler.target>14</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/postgresql/postgresql -->

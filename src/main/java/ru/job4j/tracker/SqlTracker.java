@@ -41,7 +41,7 @@ public class SqlTracker implements Store  {
     }
 
     @Override
-    public void close() throws Exception {
+    public void close() throws SQLException {
         if (cn != null) {
             cn.close();
         }
@@ -59,7 +59,7 @@ public class SqlTracker implements Store  {
                     return item;
                 }
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return item;

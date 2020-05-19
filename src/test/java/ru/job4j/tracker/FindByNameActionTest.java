@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -11,17 +10,17 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class FindByNameActionTest {
-    @Ignore
+//    @Ignore
     @Test
     public void whenFindByName() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
-        Store memTracker = (Store) new MemTracker();
+        Store tracker = new MemTracker();
         Item item = new Item("fix bug");
-        memTracker.add(item);
+        tracker.add(item);
         FindItemByNameAction act = new FindItemByNameAction();
-        act.execute(new StubInput(new String[] {item.getName()}), memTracker);
+        act.execute(new StubInput(new String[] {item.getName()}), tracker);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("==== Начинаем поиск заявки по имени ====")
                 .add("Найдено " + item.getName() + " " + item.getId())
