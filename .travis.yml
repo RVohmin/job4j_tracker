@@ -9,6 +9,10 @@ services:
 before_install:
   - psql -c 'create database tracker;' -U postgres
 
+cache:
+  directories:
+    - $HOME/.m2
+
 sudo: false
 
 # после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
