@@ -23,7 +23,8 @@ public class ShowAllActionTest {
         act.execute(new StubInput(new String[] {}), memTracker);
         String expect = "==== Показать все заявки ===="
                 + System.lineSeparator()
-                + item.getId() + " " + item.getName()
+                + "Заявка 1. id = "
+                + item.getId() + ", name = " + item.getName() + ";"
                 + System.lineSeparator();
         assertEquals(expect.trim(), new String(out.toByteArray()).trim());
 //        System.setOut(def);
