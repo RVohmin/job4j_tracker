@@ -22,7 +22,7 @@ public class MemTracker implements Store {
      * @param item новая заявка
      */
     public Item add(Item item) {
-        item.setId(Integer.valueOf(generateId()));
+        item.setId((int) generateId());
         items.add(item);
         return item;
     }
@@ -33,9 +33,9 @@ public class MemTracker implements Store {
      *
      * @return Уникальный ключ.
      */
-    private String generateId() {
+    private long generateId() {
         Random rm = new Random();
-        return String.valueOf(rm.nextLong() + System.currentTimeMillis());
+        return rm.nextInt() + System.currentTimeMillis();
     }
 
     /**
@@ -45,7 +45,7 @@ public class MemTracker implements Store {
      */
     public List<Item> findAll() {
         for (Item item : items) {
-            System.out.println(String.format("%s %s", item.getId(), item.getName()));
+            System.out.printf("%s %s %n", item.getId(), item.getName());
         }
         return items;
     }
@@ -72,7 +72,7 @@ public class MemTracker implements Store {
      */
     public Item findById(Integer id) {
         for (Item item : items) {
-            if (item.getId() == id) {
+            if (item.getId().equals(id)) {
                 return item;
             }
         }
@@ -82,7 +82,7 @@ public class MemTracker implements Store {
     private int findIndexByID(Integer id) {
         int index = 0;
         for (Item item : items) {
-            if (item.getId() == id) {
+            if (item.getId().equals(id)) {
                 return index;
             }
             index++;
@@ -118,6 +118,6 @@ public class MemTracker implements Store {
 
 
     @Override
-    public void close() throws Exception {
+    public void close() {
     }
 }

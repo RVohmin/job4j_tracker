@@ -65,7 +65,7 @@ public class SqlTrackerTest {
     public void findAll() {
         try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
             Item item = tracker.add(new Item("Peter"));
-            assertThat(tracker.findAll().size(), is(5));
+            assertThat(tracker.findAll().size(), is(16));
         } catch (Exception e) {
             e.printStackTrace();
         }
