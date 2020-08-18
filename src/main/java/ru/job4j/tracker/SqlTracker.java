@@ -1,6 +1,9 @@
 package ru.job4j.tracker;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +58,7 @@ public class SqlTracker implements Store  {
             ps.executeUpdate();
             try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    item.setId(generatedKeys.getString(1));
+                    item.setId(generatedKeys.getInt(1));
                     return item;
                 }
             }
@@ -66,11 +69,11 @@ public class SqlTracker implements Store  {
     }
 
     @Override
-    public boolean replace(String id, Item item) {
+    public boolean replace(Integer id, Item item) {
         boolean rsl = false;
         try (PreparedStatement ps = cn.prepareStatement("UPDATE items SET name = ? WHERE id = ?")) {
             ps.setString(1, item.getName());
-            ps.setInt(2, Integer.parseInt(id));
+            ps.setInt(2, id);
             int rows = ps.executeUpdate();
             rsl = rows > 0;
         } catch (SQLException e) {
@@ -80,10 +83,10 @@ public class SqlTracker implements Store  {
     }
 
     @Override
-    public boolean delete(String id) {
+    public boolean delete(Integer id) {
         boolean rsl = false;
         try (PreparedStatement ps = cn.prepareStatement("DELETE FROM items WHERE id = ?")) {
-            ps.setInt(1, Integer.parseInt(id));
+            ps.setInt(1, id);
             int rows = ps.executeUpdate();
             rsl = rows > 0;
         } catch (SQLException e) {
@@ -101,7 +104,7 @@ public class SqlTracker implements Store  {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 Item item = new Item(name);
-                item.setId(String.valueOf(id));
+                item.setId(id);
                 list.add(item);
             }
         } catch (SQLException e) {
@@ -125,7 +128,7 @@ public class SqlTracker implements Store  {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 Item item = new Item(name);
-                item.setId(String.valueOf(id));
+                item.setId(id);
                 list.add(item);
             }
         } catch (SQLException e) {
@@ -140,16 +143,16 @@ public class SqlTracker implements Store  {
     }
 
     @Override
-    public Item findById(String id) {
+    public Item findById(Integer id) {
         Item rsl = null;
         try (PreparedStatement st = cn.prepareStatement("SELECT * FROM items WHERE id = ?")) {
-            st.setInt(1, Integer.parseInt(id));
+            st.setInt(1, id);
             ResultSet resultSet = st.executeQuery();
             if (resultSet.next()) {
                 int itemId = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 rsl = new Item(name);
-                rsl.setId(String.valueOf(itemId));
+                rsl.setId(itemId);
             }
         } catch (Exception e) {
             e.printStackTrace();

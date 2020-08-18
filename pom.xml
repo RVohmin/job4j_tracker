@@ -7,7 +7,7 @@
 
     <groupId>ru.job4j_tracker</groupId>
     <artifactId>job4j_tracker</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <version>3.0</version>
     <url>http://job4j.ru/</url>
 
@@ -56,10 +56,23 @@
     <dependencies>
         <!-- postgresql -->
         <dependency>
-            <groupId>postgresql</groupId>
+            <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.1-901-1.jdbc4</version>
+            <version>42.2.13</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.20.Final</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
+        <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>8.35</version>
+        </dependency>
+
         <!--hamcrest-->
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -80,6 +93,13 @@
             <artifactId>liquibase-core</artifactId>
             <version>3.9.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -172,6 +192,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>

@@ -12,7 +12,7 @@ public class ReplaceItemAction implements UserAction {
         String id = input.askStr("Введите существующий ID заявки: ");
         String name = input.askStr("Введите новое имя заявки: ");
         Item item = new Item(name);
-        if (tracker.replace(id, item)) {
+        if (tracker.replace(Integer.valueOf(id), item)) {
             System.out.println("Заявка успешно заменена");
         } else {
             System.out.println("ошибка");

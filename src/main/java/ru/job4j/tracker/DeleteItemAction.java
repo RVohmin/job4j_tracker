@@ -10,7 +10,7 @@ public class DeleteItemAction implements UserAction {
     public boolean execute(Input input, Store memTracker) {
         System.out.println("==== Начинаем удаление заявки ====");
         String id = input.askStr("Введите существующий ID заявки: ");
-        if (memTracker.delete(id)) {
+        if (memTracker.delete(Integer.valueOf(id))) {
             System.out.println("Заявка успешно удалена");
         } else {
             System.out.println("ошибка");
