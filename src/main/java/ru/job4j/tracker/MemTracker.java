@@ -44,9 +44,9 @@ public class MemTracker implements Store {
      * @return все элементы массива items без null элементов items
      */
     public List<Item> findAll() {
-        for (Item item : items) {
-            System.out.printf("%s %s %n", item.getId(), item.getName());
-        }
+//        for (Item item : items) {
+//            System.out.printf("%s %s %n", item.getId(), item.getName());
+//        }
         return items;
     }
 
