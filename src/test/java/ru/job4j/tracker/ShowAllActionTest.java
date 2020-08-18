@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import net.sf.saxon.functions.StringJoin;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -15,16 +16,16 @@ public class ShowAllActionTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
-        Store memTracker = (Store) new MemTracker();
+        Store memTracker = new MemTracker();
         Item item = new Item("fix bug");
         memTracker.add(item);
         ShowAllAction act = new ShowAllAction();
         act.execute(new StubInput(new String[] {}), memTracker);
-        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                .add("==== Показать все заявки ====")
-                .add(item.getId() + " " + item.getName())
-                .toString();
-        assertThat(new String(out.toByteArray()), is(expect));
-        System.setOut(def);
+        String expect = "==== Показать все заявки ===="
+                + System.lineSeparator()
+                + item.getId() + " " + item.getName()
+                + System.lineSeparator();
+        assertEquals(expect.trim(), new String(out.toByteArray()).trim());
+//        System.setOut(def);
     }
 }

@@ -12,7 +12,6 @@ import java.util.List;
 public class HibernateRun {
     public static void main(String[] args) {
         System.out.println();
-//        Configuration  configuration = new Configuration().configure("hibernate.cfg.xml");
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure("hibernate.cfg.xml").build();
         try {
