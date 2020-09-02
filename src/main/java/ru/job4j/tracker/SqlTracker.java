@@ -15,7 +15,7 @@ import java.util.Properties;
  * @author romanvohmin
  * @since 14.05.2020 09:43
  */
-public class SqlTracker implements Store  {
+public class SqlTracker implements Store {
     private Connection cn;
 
     public SqlTracker() {
@@ -111,10 +111,10 @@ public class SqlTracker implements Store  {
             e.printStackTrace();
         }
         int index = 1;
-        for (Item item : list) {
-            System.out.println(String.format("Заявка %d. id = %s, name = %s;", index, item.getId(), item.getName()));
-            index++;
-        }
+//        for (Item item : list) {
+//            System.out.println(String.format("Заявка %d. id = %s, name = %s;", index, item.getId(), item.getName()));
+//            index++;
+//        }
         return list;
     }
 

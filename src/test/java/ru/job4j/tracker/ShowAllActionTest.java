@@ -27,6 +27,6 @@ public class ShowAllActionTest {
                 + item.getId() + ", name = " + item.getName() + ";"
                 + System.lineSeparator();
         assertEquals(expect.trim(), new String(out.toByteArray()).trim());
-//        System.setOut(def);
+        System.setOut(def);
     }
 }

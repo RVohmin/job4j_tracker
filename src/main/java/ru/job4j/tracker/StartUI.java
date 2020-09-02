@@ -24,11 +24,11 @@ public class StartUI {
         }
     }
 
-    public static void main(String[] args) {
+    public void run(Store store) {
         Input input = new ConsoleInput();
         Input validate = new ValidateInput(input);
-        try (Store tracker = new HbmTracker()) {
-//            tracker.init();
+        try (store) {
+            store.init();
             List<UserAction> actions = new ArrayList<>();
             actions.add(new CreateAction());
             actions.add(new ShowAllAction());
@@ -37,23 +37,18 @@ public class StartUI {
             actions.add(new FindItemByIdAction());
             actions.add(new FindItemByNameAction());
             actions.add(new ExitAction());
-            new StartUI().init(validate, tracker, actions);
+            new StartUI().init(validate, store, actions);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-//        Input input = new ConsoleInput();
-//        Input validate = new ValidateInput(input);
-//        MemTracker tracker = new MemTracker();
-//        List<UserAction> actions = new ArrayList<>();
-//        actions.add(new CreateAction());
-//        actions.add(new ShowAllAction());
-//        actions.add(new ReplaceItemAction());
-//        actions.add(new DeleteItemAction());
-//        actions.add(new FindItemByIdAction());
-//        actions.add(new FindItemByNameAction());
-//        actions.add(new ExitAction());
-//        new StartUI().init(validate, tracker, actions);
+    }
+    public static void main(String[] args) {
+        StartUI startUI = new StartUI();
+//        Store tracker = new SqlTracker(); // для БД SQL
+//        Store tracker = new MemTracker(); // для БД Mem
+        Store tracker = new HbmTracker(); // для БД Hbm
+        startUI.run(tracker);
     }
 }
 
