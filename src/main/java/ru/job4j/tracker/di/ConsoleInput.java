@@ -1,6 +1,7 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.di;
 
 import org.springframework.stereotype.Component;
+import ru.job4j.tracker.Input;
 
 import java.util.Scanner;
 
