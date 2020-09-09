@@ -45,9 +45,9 @@ public class StartUI {
     }
     public static void main(String[] args) {
         StartUI startUI = new StartUI();
+        Store tracker = new HbmTracker(); // для БД Hbm
 //        Store tracker = new SqlTracker(); // для БД SQL
 //        Store tracker = new MemTracker(); // для БД Mem
-        Store tracker = new HbmTracker(); // для БД Hbm
         startUI.run(tracker);
     }
 }
