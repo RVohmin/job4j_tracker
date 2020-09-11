@@ -6,6 +6,7 @@ import ru.job4j.tracker.Input;
 
 import java.util.Scanner;
 
+@Component
 @Scope("prototype")
 public class ConsoleInput implements Input {
     /**
